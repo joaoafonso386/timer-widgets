@@ -1,0 +1,13 @@
+.card-mui {
+  margin: 30px auto;
+
+}
+
+.card-mui img {
+  object-position: 0px 0px;
+  width: 120%;
+}
+
+.card-mui h2, .card-mui h4 {
+  margin-top: 25px;
+}

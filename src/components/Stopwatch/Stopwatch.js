@@ -1,3 +1,10 @@
+import {
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@material-ui/core";
 import React from "react";
 import { useEffect, useState } from "react";
 
@@ -19,22 +26,33 @@ const Stopwatch = () => {
 
   return (
     <div>
-      <div>
-        <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-        <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
-        <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
-      </div>
-      <div>
-        {!running && time === 0 && (
-          <button onClick={() => setRunning(true)}>Start</button>
-        )}
-        {running && time > 0 && (
-          <button onClick={() => setRunning(false)}>Stop</button>
-        )}
-        {!running && time > 0 && (
-          <button onClick={() => setTime(0)}>Reset</button>
-        )}
-      </div>
+      <Card className="card-mui" sx={{ maxWidth: 600 }}>
+        <CardMedia component="img" alt="clock" height="340" image="" />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Stopwatch
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            A stopwatch clock that can start, stop and reset a timer
+          </Typography>
+          <Typography variant="h2">
+            <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+            <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
+            <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
+          </Typography>
+          <div>
+            {!running && (time === 0 || time > 0) && (
+              <Button onClick={() => setRunning(true)}>Start</Button>
+            )}
+            {running && time >= 0 && (
+              <Button onClick={() => setRunning(false)}>Stop</Button>
+            )}
+            {!running && time > 0 && (
+              <Button onClick={() => setTime(0)}>Reset</Button>
+            )}
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };

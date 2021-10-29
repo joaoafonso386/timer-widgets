@@ -2,8 +2,6 @@ import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import timeImg from "../../assets/clock-img.jpg";
 
-import "./DigitalClock.css";
-
 const DigitalClock = () => {
   const [clock, setClock] = useState();
 
@@ -20,7 +18,7 @@ const DigitalClock = () => {
 
   return (
     <div>
-      <Card className="digital-clock" sx={{ maxWidth: 600 }}>
+      <Card className="card-mui" sx={{ maxWidth: 600 }}>
         <CardMedia component="img" alt="clock" height="340" image={timeImg} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

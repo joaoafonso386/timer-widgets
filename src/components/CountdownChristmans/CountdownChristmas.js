@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
+import christmasImg from "../../assets/christmas-img.jpg";
+import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
 
 const CountdownChristmas = () => {
   const [currentTime, setCurrentTime] = useState("");
@@ -20,15 +22,32 @@ const CountdownChristmas = () => {
       if (diff <= 0) {
         setCurrentTime("CHRISTMAS IS HERE");
       }
-    }, 100);
+    }, 1);
     return () => {
       clearInterval(findDistance);
     };
   }, [currentTime]);
 
   return (
-    <div className="countdown">
-      <h1>{currentTime}</h1>
+    <div>
+      <Card className="card-mui" sx={{ maxWidth: 600 }}>
+        <CardMedia
+          component="img"
+          alt="countdown to christmas"
+          height="340"
+          image={christmasImg}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Christmas Countdown
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            How many days, hours and minutes do we have until christmas? Find
+            out with this coutdown!
+          </Typography>
+          <Typography variant="h4">{currentTime}</Typography>
+        </CardContent>
+      </Card>
     </div>
   );
 };
