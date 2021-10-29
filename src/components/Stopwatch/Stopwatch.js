@@ -7,6 +7,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { useEffect, useState } from "react";
+import stopwatchImg from "../../assets/stopwatch-img.jpg";
 
 const Stopwatch = () => {
   const [time, setTime] = useState(0);
@@ -27,7 +28,13 @@ const Stopwatch = () => {
   return (
     <div>
       <Card className="card-mui" sx={{ maxWidth: 600 }}>
-        <CardMedia component="img" alt="clock" height="340" image="" />
+        <CardMedia
+          component="img"
+          alt="clock"
+          height="340"
+          image={stopwatchImg}
+          style={{ objectPosition: "0px -405px" }}
+        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             Stopwatch
@@ -40,15 +47,34 @@ const Stopwatch = () => {
             <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
             <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
           </Typography>
-          <div>
+          <div style={{ marginTop: "20px" }}>
             {!running && (time === 0 || time > 0) && (
-              <Button onClick={() => setRunning(true)}>Start</Button>
+              <Button
+                color="inherit"
+                variant="contained"
+                onClick={() => setRunning(true)}
+              >
+                Start
+              </Button>
             )}
             {running && time >= 0 && (
-              <Button onClick={() => setRunning(false)}>Stop</Button>
+              <Button
+                color="inherit"
+                variant="contained"
+                onClick={() => setRunning(false)}
+              >
+                Stop
+              </Button>
             )}
             {!running && time > 0 && (
-              <Button onClick={() => setTime(0)}>Reset</Button>
+              <Button
+                style={{ marginLeft: "15px" }}
+                variant="contained"
+                onClick={() => setTime(0)}
+                color="inherit"
+              >
+                Reset
+              </Button>
             )}
           </div>
         </CardContent>
