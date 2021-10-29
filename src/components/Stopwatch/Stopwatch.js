@@ -16,6 +16,7 @@ const Stopwatch = () => {
     }
     return () => clearInterval(interval);
   }, [running]);
+
   return (
     <div>
       <div>
